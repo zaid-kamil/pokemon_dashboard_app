@@ -25,7 +25,7 @@ def main():
         }
     </style>
     ''', unsafe_allow_html=True)
-    st.image("hero_image.jpg", use_column_width=True)
+    st.image("hero_image.jpg", use_container_width=True)
     st.title("Pokemon Dashboard")
     with st.spinner("Loading Pokemons..."):
         df = load_data()
@@ -56,9 +56,9 @@ def main():
     if selections:
         fig3 = px.scatter_matrix(df, dimensions=selections,
                         color='Generation', height=800)
-        st.plotly_chart(fig3, use_column_width=True)
+        st.plotly_chart(fig3, use_container_width=True)
         fig4 = px.histogram(df, x=selections, height=600)
-        st.plotly_chart(fig4, use_column_width=True)
+        st.plotly_chart(fig4, use_container_width=True)
 
     c1, c2, c3, c4 = st.columns(4)
     num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -73,11 +73,11 @@ def main():
                     facet_col=face, 
                     height=1500, 
                     facet_col_wrap=4)
-    st.plotly_chart(fig5, use_column_width=True)
+    st.plotly_chart(fig5, use_container_width=True)
 
     fig6 = px.scatter_3d(df, x=x, y=y, z=z, color='Generation', 
                         size='Total', hover_name='Name', height=800)
-    st.plotly_chart(fig6, use_column_width=True)
+    st.plotly_chart(fig6, use_container_width=True)
 
 
 if __name__ == "__main__":
